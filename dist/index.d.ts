@@ -1,1 +1,2 @@
-export declare const Greeter: (name: string) => string;
+import { PiniaPluginContext } from "pinia";
+export declare const firestoreSyncPlugin: ({ store }: PiniaPluginContext) => void;
