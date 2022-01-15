@@ -1,0 +1,26 @@
+{
+  "name": "@pinia/pinia-plugin-firestore-sync",
+  "version": "1.0.0",
+  "description": "Sync your pinia state and firestore document at ease!",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsc -v",
+    "build": "tsc"
+  },
+  "keywords": [
+    "pinia",
+    "plugin",
+    "firestore",
+    "starter"
+  ],
+  "author": "kazuwombat",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ]
+}
