@@ -17,6 +17,7 @@
   "author": "kazuwombat",
   "license": "MIT",
   "devDependencies": {
+    "@babel/types": "^7.16.8",
     "firebase": "^9.6.3",
     "pinia": "^2.0.9",
     "typescript": "^4.5.4",
