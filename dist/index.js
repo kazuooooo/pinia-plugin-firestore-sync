@@ -36,16 +36,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.firestoreSyncPlugin = void 0;
+exports.PiniaFirestoreSync = void 0;
 var firestore_1 = require("firebase/firestore");
-var firestoreSyncPlugin = function (_a) {
+/**
+ * Adds a `sync` function to your store.
+ * The `sync` method can sync your state propery with firestore  Document/Collection/Query easily.
+ *
+ * @example
+ *
+ * ```ts
+ * import { PiniaFirestoreSync } from 'pinia-plugin-firestore-sync'
+ * ...
+ * const pinia = createPinia().use(firestoreSyncPlugin)
+ * app.use(pinia).mount('#app')
+ *
+ * ```
+ */
+var PiniaFirestoreSync = function (_a) {
     var store = _a.store;
-    /**
-     * Synchronize pinia state and firestore Document/Collection/Query
-     * @param key Key name of state which synchronize with ref.
-     * @param ref Reference to subscribe.
-     * @returns
-     */
     store.sync = function (key, ref) {
         // Document
         if (ref instanceof firestore_1.DocumentReference) {
@@ -72,4 +80,4 @@ var firestoreSyncPlugin = function (_a) {
         }); });
     };
 };
-exports.firestoreSyncPlugin = firestoreSyncPlugin;
+exports.PiniaFirestoreSync = PiniaFirestoreSync;

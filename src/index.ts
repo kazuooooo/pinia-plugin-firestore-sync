@@ -1,14 +1,6 @@
 import { CollectionReference, DocumentReference, onSnapshot, Query, Unsubscribe } from "firebase/firestore";
 import { PiniaPluginContext } from "pinia";
 
-// 残りTODO
-// 第二引数が何を入れてもコンパイルが通ってしまうので修正する(インターフェースのoverload周りやと思う)
-// Debounce参考にドキュメントを書く
-// peerDependencyを入れる(vue3、firestore9、pinia2)
-// 公開する
-// 記事を書く
-// 
-
 /**
  * Adds a `sync` function to your store.
  * The `sync` method can sync your state propery with firestore  Document/Collection/Query easily. 
@@ -45,23 +37,114 @@ export const PiniaFirestoreSync = ({ store }: PiniaPluginContext) => {
 }
 
 declare module 'pinia' {
+  // FIXME: Want to limit `key: string` to only keys of State
   export interface PiniaCustomProperties<Id, S, G, A> {
     /**
      * 
      * @param key Key name of state which synchronize with firestore document data.
      * @param ref Document reference to sync
+     * 
+     * @example
+     * 
+     * ```ts
+     * type ExampleDoc = {
+     *   name: string,
+     *   age: number
+     * }
+     * 
+     * export type State = {
+     *   docData: ExampleDoc | null,
+     * }
+     * 
+     * export const useExampleStore = defineStore('expamle', {
+     *   state: (): State => {
+     *     return {
+     *       docData: null,
+     *     }
+     *   },
+     *   actions: {
+     *     async setup() {
+     *       // Get Document reference
+     *       const store = getFirestore()
+     *       const docRef = doc(store, 'Examples/id')
+     * 
+     *       // Do the magic
+     *       this.sync('docData', docRef)
+     *     }
+     *   }
+     * })
+     *```
      */
     sync(key: string, ref: DocumentReference): Unsubscribe
     /**
      * 
      * @param key Key name of state which synchronize with firestore collection data.
      * @param ref Collection reference to sync
+     * 
+     * @example
+     * 
+     * ```ts
+     * type ExampleDoc = {
+     *   name: string,
+     *   age: number
+     * }
+     * 
+     * export type State = {
+     *   collectionData: ExampleDoc[] | null,
+     * }
+     * export const useExampleStore = defineStore('expamle', {
+     *   state: (): State => {
+     *     return {
+     *       collectionData: null,
+     *     }
+     *   },
+     *   actions: {
+     *     async setup() {
+     *       // Get Collection reference
+     *       const store = getFirestore()
+     *       const collectionRef = collection(store, 'Examples')
+     * 
+     *       // Do the magic
+     *       this.sync('collectionData', collectionRef)
+     *     }
+     *   }
+     * })
+     *```
      */
     sync(key: string, ref: CollectionReference): Unsubscribe
     /**
      * 
      * @param key Key name of state which synchronize with firestore collection data.
      * @param ref Query to sync
+     * 
+     * @example
+     * ```ts
+     * type ExampleDoc = {
+     *   name: string,
+     *   age: number
+     * }
+     * export type State = {
+     *   queryData: ExampleDoc[] | null,
+     * } 
+     * export const useExampleStore = defineStore('expamle', {
+     *   state: (): State => {
+     *     return {
+     *       queryData: null,
+     *     }
+     *   },
+     *   actions: {
+     *     async setup() {
+     *       // Build query
+     *       const store = getFirestore()
+     *       const collectionRef = collection(store, 'Examples')
+     *       const q = query(collectionRef, where('name', '==', 'wombat'))
+     * 
+     *       // Do the magic
+     *       this.sync('queryData', q)
+     *     }
+     *   }
+     * })
+     * ```
      */
     sync(key: string, ref: Query): Unsubscribe
   }
