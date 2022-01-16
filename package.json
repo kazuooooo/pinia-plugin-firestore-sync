@@ -1,5 +1,5 @@
 {
-  "name": "@pinia/pinia-plugin-firestore-sync",
+  "name": "@pinia/plugin-firestore-sync",
   "version": "1.0.0",
   "description": "Sync your pinia state and firestore document at ease!",
   "main": "dist/index.js",
@@ -24,8 +24,7 @@
     "vue": "^3.2.26"
   },
   "files": [
-    "dist/**/*",
-    "README.md"
+    "dist/**/*"
   ],
   "dependencies": {},
   "peerDependencies": {
