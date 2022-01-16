@@ -19,7 +19,7 @@ export const PiniaFirestoreSync = ({ store }: PiniaPluginContext) => {
   store.sync = (key, ref) => {
     // Document
     if (ref instanceof DocumentReference) {
-      return onSnapshot(ref, async (ds) => {
+      return onSnapshot(ref, (ds) => {
         if (ds.exists()) {
           store.$patch({ [key]: ds.data() })
         }
@@ -27,7 +27,7 @@ export const PiniaFirestoreSync = ({ store }: PiniaPluginContext) => {
     }
 
     // Collection or Query
-    return onSnapshot(ref, async (qs) => {
+    return onSnapshot(ref, (qs) => {
       const datum = qs.docs.map(d => d.data())
       store.$patch((state) => {
         state[key] = datum
