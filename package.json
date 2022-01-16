@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-firestore-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sync your pinia state and firestore document at ease!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
