@@ -19,7 +19,7 @@ export const PiniaFirestoreSync = ({ store }: PiniaPluginContext) => {
   store.sync = (key, ref) => {
     // Document
     if (ref instanceof DocumentReference) {
-      return onSnapshot(ref, async (ds) => {
+      return onSnapshot(ref, (ds) => {
         if (ds.exists()) {
           const data = ds.data()
           Object.defineProperty(data, 'id', {

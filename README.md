@@ -8,7 +8,7 @@ Sync your pinia 🍍 store with Firestore at ease!
 ## Installation
 
 ```sh
-npm install @pinia/plugin-firestore-sync
+npm install pinia-plugin-firestore-sync
 ```
 
 ## Usage

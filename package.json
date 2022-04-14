@@ -1,12 +1,13 @@
 {
-  "name": "@pinia/pinia-plugin-firestore-sync",
-  "version": "1.0.0",
+  "name": "pinia-plugin-firestore-sync",
+  "version": "1.0.2",
   "description": "Sync your pinia state and firestore document at ease!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsc -v",
-    "build": "tsc"
+    "build": "tsc",
+    "deploy": "rm -rf dist && yarn run tsc && npm publish"
   },
   "keywords": [
     "pinia",
@@ -24,8 +25,7 @@
     "vue": "^3.2.26"
   },
   "files": [
-    "dist/**/*",
-    "README.md"
+    "dist/**/*"
   ],
   "dependencies": {},
   "peerDependencies": {
