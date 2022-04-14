@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsc -v",
     "build": "tsc",
-    "deploy": "rm -rf dist && tsc && npm publish"
+    "deploy": "rm -rf dist && yarn run tsc && npm publish"
   },
   "keywords": [
     "pinia",
