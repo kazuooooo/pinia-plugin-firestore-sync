@@ -57,22 +57,18 @@ var PiniaFirestoreSync = function (_a) {
     store.sync = function (key, ref) {
         // Document
         if (ref instanceof firestore_1.DocumentReference) {
-            return (0, firestore_1.onSnapshot)(ref, function (ds) { return __awaiter(void 0, void 0, void 0, function () {
-                var data;
+            return (0, firestore_1.onSnapshot)(ref, function (ds) {
                 var _a;
-                return __generator(this, function (_b) {
-                    if (ds.exists()) {
-                        data = ds.data();
-                        Object.defineProperty(data, 'id', {
-                            value: ds.id,
-                            writable: false,
-                            enumerable: false
-                        });
-                        store.$patch((_a = {}, _a[key] = data, _a));
-                    }
-                    return [2 /*return*/];
-                });
-            }); });
+                if (ds.exists()) {
+                    var data = ds.data();
+                    Object.defineProperty(data, 'id', {
+                        value: ds.id,
+                        writable: false,
+                        enumerable: false
+                    });
+                    store.$patch((_a = {}, _a[key] = data, _a));
+                }
+            });
         }
         // Collection or Query
         return (0, firestore_1.onSnapshot)(ref, function (qs) { return __awaiter(void 0, void 0, void 0, function () {

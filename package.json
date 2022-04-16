@@ -1,13 +1,13 @@
 {
   "name": "pinia-plugin-firestore-sync",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Sync your pinia state and firestore document at ease!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsc -v",
     "build": "tsc",
-    "deploy": "rm -rf dist && yarn run tsc && npm publish"
+    "deploy": "rm -rf dist && yarn run tsc && npm publish --access public"
   },
   "keywords": [
     "pinia",
