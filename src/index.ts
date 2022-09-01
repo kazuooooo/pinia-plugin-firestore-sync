@@ -27,7 +27,9 @@ export const PiniaFirestoreSync = ({ store }: PiniaPluginContext) => {
             writable: false,
             enumerable:false
           })
-          store.$patch({ [key]: data })
+          store.$patch((state) => {
+            state[key] = data
+          })
         }
       })
     }
