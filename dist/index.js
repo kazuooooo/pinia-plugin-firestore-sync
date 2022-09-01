@@ -58,15 +58,16 @@ var PiniaFirestoreSync = function (_a) {
         // Document
         if (ref instanceof firestore_1.DocumentReference) {
             return (0, firestore_1.onSnapshot)(ref, function (ds) {
-                var _a;
                 if (ds.exists()) {
-                    var data = ds.data();
-                    Object.defineProperty(data, 'id', {
+                    var data_1 = ds.data();
+                    Object.defineProperty(data_1, 'id', {
                         value: ds.id,
                         writable: false,
                         enumerable: false
                     });
-                    store.$patch((_a = {}, _a[key] = data, _a));
+                    store.$patch(function (state) {
+                        state[key] = data_1;
+                    });
                 }
             });
         }
